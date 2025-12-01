@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MarkdownWeaver</string>
+    <string name="label_input_hint">在此输入 Markdown 内容...</string>
+    <string name="btn_copy">复制</string>
+    <string name="msg_copy_success">已复制！请前往公众号助手粘贴。</string>
+
+    <!-- 主题名称 -->
+    <string name="theme_next">Next</string>
+    <string name="theme_hexo">Hexo</string>
+    <string name="theme_github">GitHub</string>
+    <string name="theme_wechat">护眼</string>
+    <string name="theme_google">Google</string> <!-- 新增 -->
+    <string name="theme_apple">Apple</string>   <!-- 新增 -->
+
+    <string name="menu_title">设置</string>
+    <string name="menu_about">关于应用</string>
+    <string name="menu_donate">打赏开发者</string>
+    <string name="menu_cancel">取消</string>
+
+    <string name="about_title">关于 MarkdownWeaver</string>
+    <string name="about_desc">MarkdownWeaver 是一款专为 Android 移动端内容创作者设计的工具。</string>
+    <string name="about_dev_info">开发者: Java Engineer\nUI 设计: Gemini Style</string>
+    <string name="btn_close">关闭</string>
+
+    <string name="donate_dialog_title">支持开发者</string>
+    <string name="donate_message">如果这个工具提高了你的写作效率，\n欢迎请我喝杯咖啡！☕️</string>
+    <string name="donate_tip">提示：请截图保存，打开微信“扫一扫”识别相册图片。</string>
+    <string name="btn_thanks">关闭</string>
+    <string name="desc_qr_code">微信收款码</string>
+</resources>

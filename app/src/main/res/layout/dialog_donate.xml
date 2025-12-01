@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    android:background="@color/surfaceColor">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/donate_message"
+        android:textSize="16sp"
+        android:lineSpacingExtra="4dp"
+        android:textColor="@color/textColorPrimary"
+        android:gravity="center"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- 
+      注意: 请确保 res/drawable/wechat_pay_qr.png 存在
+      如果暂时没有图片，可以将 src 临时改为 @android:drawable/ic_menu_gallery 避免报错
+    -->
+    <ImageView
+        android:id="@+id/img_qr_code"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:src="@drawable/wechat_pay_qr"
+        android:scaleType="fitCenter"
+        android:background="#FAFAFA"
+        android:padding="8dp"
+        android:contentDescription="@string/desc_qr_code"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/donate_tip"
+        android:textSize="12sp"
+        android:textColor="@color/textColorSecondary"
+        android:gravity="center"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"> <!-- 保留此行，删除 android:statusBarBackground -->
+
+    <!-- ==================== 主内容区域 ==================== -->
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- 顶部 Header -->
+            <!-- fitsSystemWindows 会自动处理高度，这里只需正常 Padding -->
+            <RelativeLayout
+                android:id="@+id/header_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:elevation="0dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:paddingHorizontal="16dp">
+
+                <ImageButton
+                    android:id="@+id/btn_menu"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_menu_sort_by_size"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:tint="#444746"
+                    android:scaleType="center"
+                    android:layout_centerVertical="true"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_toggle_bar"
+                    android:padding="4dp"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btn_mode_edit"
+                        android:layout_width="56dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_mode_edit"
+                        android:background="@drawable/bg_toggle_item_selected"
+                        android:scaleType="centerInside"
+                        android:tint="#0B57D0"
+                        android:padding="8dp"/>
+
+                    <ImageButton
+                        android:id="@+id/btn_mode_preview"
+                        android:layout_width="56dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_mode_preview"
+                        android:background="@android:color/transparent"
+                        android:scaleType="centerInside"
+                        android:tint="#444746"
+                        android:padding="8dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_copy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="复制"
+                    android:textSize="13sp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="@drawable/bg_copy_btn"
+                    android:paddingHorizontal="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+            <!-- 内容 Frame -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF">
+
+                <EditText
+                    android:id="@+id/et_markdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="top|start"
+                    android:background="@null"
+                    android:padding="24dp"
+                    android:hint="输入 Markdown 内容..."
+                    android:textSize="16sp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:textColor="#1F1F1F"
+                    android:textColorHint="#8E918F"
+                    android:inputType="textMultiLine|textNoSuggestions"/>
+
+                <WebView
+                    android:id="@+id/webview_preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:paddingBottom="80dp"/>
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- 底部悬浮样式栏 (支持横向滚动) -->
+        <LinearLayout
+            android:id="@+id/layout_theme_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/bg_floating_bar"
+            android:elevation="4dp"
+            android:padding="6dp"
+            android:visibility="gone">
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:overScrollMode="never">
+
+                <RadioGroup
+                    android:id="@+id/rg_themes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    
+                    <RadioButton android:id="@+id/rb_next" android:checked="true" android:text="@string/theme_next" android:layout_width="wrap_content" android:layout_height="36dp" android:button="@null" android:background="@drawable/bg_tab_selector" android:textColor="@color/selector_tab_text" android:textSize="13sp" android:textStyle="bold" android:gravity="center" android:paddingHorizontal="16dp" android:layout_marginEnd="4dp"/>
+                    <RadioButton android:id="@+id/rb_hexo" android:text="@string/theme_hexo" android:layout_width="wrap_content" android:layout_height="36dp" android:button="@null" android:background="@drawable/bg_tab_selector" android:textColor="@color/selector_tab_text" android:textSize="13sp" android:textStyle="bold" android:gravity="center" android:paddingHorizontal="16dp" android:layout_marginEnd="4dp"/>
+                    <RadioButton android:id="@+id/rb_github" android:text="@string/theme_github" android:layout_width="wrap_content" android:layout_height="36dp" android:button="@null" android:background="@drawable/bg_tab_selector" android:textColor="@color/selector_tab_text" android:textSize="13sp" android:textStyle="bold" android:gravity="center" android:paddingHorizontal="16dp" android:layout_marginEnd="4dp"/>
+                    <RadioButton android:id="@+id/rb_google" android:text="@string/theme_google" android:layout_width="wrap_content" android:layout_height="36dp" android:button="@null" android:background="@drawable/bg_tab_selector" android:textColor="@color/selector_tab_text" android:textSize="13sp" android:textStyle="bold" android:gravity="center" android:paddingHorizontal="16dp" android:layout_marginEnd="4dp"/>
+                    <RadioButton android:id="@+id/rb_apple" android:text="@string/theme_apple" android:layout_width="wrap_content" android:layout_height="36dp" android:button="@null" android:background="@drawable/bg_tab_selector" android:textColor="@color/selector_tab_text" android:textSize="13sp" android:textStyle="bold" android:gravity="center" android:paddingHorizontal="16dp" android:layout_marginEnd="4dp"/>
+                    <RadioButton android:id="@+id/rb_wechat" android:text="@string/theme_wechat" android:layout_width="wrap_content" android:layout_height="36dp" android:button="@null" android:background="@drawable/bg_tab_selector" android:textColor="@color/selector_tab_text" android:textSize="13sp" android:textStyle="bold" android:gravity="center" android:paddingHorizontal="16dp"/>
+                </RadioGroup>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- 侧边栏 -->
+    <LinearLayout
+        android:id="@+id/nav_view"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@drawable/bg_drawer_panel"
+        android:orientation="vertical"
+        android:paddingTop="50dp"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MarkdownWeaver"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#444746"
+            android:layout_marginBottom="24dp"
+            android:layout_marginStart="12dp"
+            android:fontFamily="sans-serif-medium"/>
+
+        <LinearLayout
+            android:id="@+id/nav_new_doc"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_drawer_item_selected"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="24dp"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_mode_edit" android:tint="#001D35"/> 
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="新文档 / New Doc" android:textSize="14sp" android:textStyle="bold" android:textColor="#001D35" android:layout_marginStart="12dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings &amp; Info"
+            android:textSize="12sp"
+            android:textColor="#444746"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="12dp"/>
+
+        <LinearLayout
+            android:id="@+id/nav_donate"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/star_on" android:tint="#444746"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="打赏开发者" android:textColor="#1F1F1F" android:textSize="14sp" android:textStyle="bold" android:layout_marginStart="16dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_about"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_info_details" android:tint="#444746"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="关于应用" android:textColor="#1F1F1F" android:textSize="14sp" android:textStyle="bold" android:layout_marginStart="16dp"/>
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="v1.1.0 (All Styles)"
+            android:textSize="11sp"
+            android:textColor="#8E918F"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"/>
+    </LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

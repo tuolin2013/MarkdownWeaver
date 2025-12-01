@@ -1,0 +1,17 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        
+        <!-- 核心：沉浸式状态栏配置 (Android 5.0+) -->
+        <!-- 状态栏颜色设置为透明 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!-- 允许窗口扩展到状态栏区域 -->
+        <item name="android:windowTranslucentStatus">false</item> 
+        <!-- Android 6.0+ 状态栏图标变黑 (因为背景是白色的) -->
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>
